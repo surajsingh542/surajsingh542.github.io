@@ -150,10 +150,10 @@ const selectedIcon = localStorage.getItem("selected-icon");
 
 // We obtain the current theme that interface has by validating the dark-theme class
 const getCurrentTheme = () => {
-  document.body.classList.contains(darkTheme) ? "dark" : "light";
+  return document.body.classList.contains(darkTheme) ? "dark" : "light";
 };
 const getCurrentIcon = () => {
-  document.body.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
+  return themeButton.classList.contains(iconTheme) ? "uil-sun" : "uil-moon";
 };
 
 // We validate if the user previously choose a theme
@@ -162,7 +162,7 @@ if (selectedTheme) {
   document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
     darkTheme
   );
-  themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
+  themeButton.classList[selectedIcon === "uil-sun" ? "add" : "remove"](
     iconTheme
   );
 }
