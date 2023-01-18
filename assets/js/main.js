@@ -228,23 +228,14 @@ async function handleFormSubmit(event) {
       body: formData,
     };
 
-    const response = await fetch(url, fetchOptions);
-    if (!response.ok) {
-      msgStatus.innerHTML =
-        "Oops! There was a problem delivering your message, please contact via other means.";
-      msgStatus.style.display = "block";
-      setTimeout(() => {
-        msgStatus.style.display = "none";
-      }, 4000);
-      form.reset();
-    } else {
-      msgStatus.innerHTML = "Your message has been sent.";
-      msgStatus.style.display = "block";
-      setTimeout(() => {
-        msgStatus.style.display = "none";
-      }, 4000);
-      form.reset();
-    }
+    await fetch(url, fetchOptions);
+
+    msgStatus.innerHTML = "Your message has been sent.";
+    msgStatus.style.display = "block";
+    setTimeout(() => {
+      msgStatus.style.display = "none";
+    }, 4000);
+    form.reset();
   } catch (err) {
     msgStatus.innerHTML =
       "Oops! There was a problem delivering your message, please contact via other means.";
